@@ -6,7 +6,7 @@ class Producto {
     }
 
     sumarIva() {
-        this.precioUss *= 1.21;
+        this.precio *= 1.21;
     }
 
 }
@@ -25,30 +25,35 @@ console.log(lista);
 const products = lista.map((producto) => producto.nombre);
 console.log(products);
 
-console.log(`Productos disponibles`);
-
-for(i = 0; i <= products.length - 1; i++) {
+for(let i = 0; i < products.length; i++) {
     console.log(products[i]);
 }
 
-for(const producto of lista) {
+function findPrinter(name) {
+    return name.nombre === compra;
+  }
+let compra=0;
+let subTotal=0;
+const carro=[];
+while (compra != "NO") {
 
-    let compra = prompt ("Elija los productos que desea comprar: \nender 3 pro \nender 2 pro \nender 5 pro");
-
-    while(compra != 'esc') { 
-
-        if(products.includes(compra)) {
-            cantidad = prompt ("Unidades");
-            producto.sumarIva();
-            alert("Ud va a comprar " + cantidad + " " + producto.nombre + " y el precio es de $"  + producto.precio);
-        } else {
-            compra = prompt ("ingrese un producto de la lista");
-            continue
-       }
-
-       compra = prompt ("Elija los productos que desea comprar: \nender 3 pro \nender 2 pro \nender 5 pro");
-
-    }
+    compra = prompt ("Elija los productos que desea comprar: \nender 3 pro \nender 2 pro \nender 5 pro");
     
+  
+        
+        let printer = lista.find(compra => findPrinter(compra));
+        
+        console.log(printer);
+        
+        if(products.includes(compra)) {
+                        cantidad = prompt ("Unidades");
+                        printer.sumarIva();
+                        alert("Ud va a comprar " + cantidad + " " + printer.nombre + " y el precio es de $"  + printer.precio*cantidad);
+                    } else {
+                        compra = prompt ("ingrese un producto de la lista");
+                        continue
+                   }
+
 }
+
 
